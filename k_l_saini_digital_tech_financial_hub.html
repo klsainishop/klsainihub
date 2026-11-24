@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K L Saini Digital, Tech & Financial Hub | Rewari</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans Devanagari', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', 'Noto Sans Devanagari', sans-serif; }
+    .tab-active {
+      background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);
+    }
+    @media print {
+      body * { visibility: hidden; }
+      #print-area, #print-area * { visibility: visible; }
+      #print-area { position: absolute; left: 0; top: 0; width: 100%; background: white; color: black; }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Top Trust & Backend Status Bar -->
+  <div class="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 border-b border-emerald-800/50 text-xs py-2 px-4">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2 text-emerald-300 font-medium">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span>Rewari's All-in-One Tech, Finance & Cyber Portal</span>
+        <span class="hidden sm:inline text-slate-400">|</span>
+        <span class="hidden sm:inline text-amber-300">AMFI ARN-254674</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span id="gas-status-badge" class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-medium">
+          ⚡ IPO Feed: Demo Mode (Apps Script Ready)
+        </span>
+        <a href="https://wa.me/917206770673?text=Namaste%20KL%20Saini%20Ji,%20I%20visited%20your%20Digital%20Hub%20portal." target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold underline">
+          WhatsApp: 7206770673
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header class="bg-slate-900/90 backdrop-blur-md sticky top-0 z-40 border-b border-slate-800 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-3.5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center font-extrabold text-xl text-white shadow-md">
+            KL
+          </div>
+          <div>
+            <h1 class="text-lg sm:text-xl font-extrabold tracking-tight text-white leading-tight">
+              K L Saini <span class="text-emerald-400">Digital, Tech & Financial Hub</span>
+            </h1>
+            <p class="text-xs text-slate-400">Khushboo Electronics • Mutual Funds (ARN-254674) • IPO • 1930 Cyber Help</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5-Tab Navigation Bar -->
+      <nav class="flex overflow-x-auto pb-1 lg:pb-0 gap-1.5 no-scrollbar" aria-label="Main Sections">
+        <button onclick="switchTab('laptop')" id="btn-laptop" class="tab-btn tab-active px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition flex items-center gap-1.5">
+          💻 <span>Laptop & Tester</span>
+        </button>
+        <button onclick="switchTab('finance')" id="btn-finance" class="tab-btn bg-slate-800/80 hover:bg-slate-800 text-slate-300 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition flex items-center gap-1.5">
+          📈 <span>Mutual Fund & E-Books</span>
+        </button>
+        <button onclick="switchTab('ipo')" id="btn-ipo" class="tab-btn bg-slate-800/80 hover:bg-slate-800 text-slate-300 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition flex items-center gap-1.5">
+          🚀 <span>Live IPO Tracker</span>
+        </button>
+        <button onclick="switchTab('cyber')" id="btn-cyber" class="tab-btn bg-slate-800/80 hover:bg-slate-800 text-slate-300 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition flex items-center gap-1.5">
+          🛡️ <span>1930 Cyber Hub</span>
+        </button>
+        <button onclick="switchTab('tools')" id="btn-tools" class="tab-btn bg-slate-800/80 hover:bg-slate-800 text-slate-300 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition flex items-center gap-1.5">
+          🛠️ <span>Free Utility Studio</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Toast Notification Box (No alert() used anywhere) -->
+  <div id="toast-box" class="fixed bottom-5 right-5 z-50 hidden max-w-sm bg-slate-800 border border-emerald-500 text-white px-4 py-3 rounded-xl shadow-2xl text-sm flex items-center gap-3">
+    <span id="toast-icon">✅</span>
+    <span id="toast-msg">Action completed!</span>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6 space-y-8">
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 1: KHUSHBOO ELECTRONICS & LAPTOP HARDWARE TESTER              -->
+    <!-- ===================================================================== -->
+    <section id="tab-laptop" class="tab-section space-y-8">
+      <!-- Shop Banner -->
+      <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-950/60 border border-slate-700/80 rounded-2xl p-6 sm:p-8 shadow-xl">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="space-y-2 max-w-2xl">
+            <span class="inline-block px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider">
+              Khushboo Electronics • Rewari
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              Premium Business-Class Refurbished Laptops & Live Hardware Tester
+            </h2>
+            <p class="text-slate-300 text-sm sm:text-base">
+              A++ Grade Imported Commercial Laptops (Dell Latitude, HP EliteBook, Lenovo ThinkPad) — खरीदने से पहले यहीं ऑनलाइन स्क्रीन, कीबोर्ड, स्पीकर और कैमरा खुद टेस्ट करें!
+            </p>
+            <p class="text-xs sm:text-sm text-amber-300 font-medium pt-1">
+              📍 पता: सुंदरलाल मार्केट, एवरेस्ट सिनेमा के पास, रेवाड़ी (हरियाणा) | 📞 7206770673
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+            <a href="https://wa.me/917206770673?text=Namaste%20Khushboo%20Electronics,%20mujhe%20latest%20laptop%20stock%20ki%20jankari%20chahiye." target="_blank" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm text-center shadow-lg transition">
+              💬 WhatsApp पर स्टॉक पूछें
+            </a>
+            <a href="#hardware-tester-box" class="px-5 py-3 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-semibold text-sm text-center transition">
+              🧪 नीचे Laptop Test करें ↓
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Laptop Stock Catalog (Strictly WITHOUT price tags as requested) -->
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xl font-bold text-white">📦 उपलब्ध बिजनेस लैपटॉप स्टॉक (Best Deal ऑन WhatsApp)</h3>
+          <span class="text-xs text-slate-400 bg-slate-800 px-3 py-1 rounded-full">Warranty + Original Charger</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="laptop-grid">
+          <!-- Cards populated via JS -->
+        </div>
+      </div>
+
+      <!-- Interactive Live Hardware Tester -->
+      <div id="hardware-tester-box" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6 shadow-xl">
+        <div class="border-b border-slate-800 pb-4">
+          <h3 class="text-xl font-bold text-emerald-400">🧪 Live Laptop Hardware Diagnostic Lab (ऑनलाइन टेस्टिंग टूल)</h3>
+          <p class="text-sm text-slate-400 mt-1">नया या सेकंड-हैंड लैपटॉप लेने से पहले बिना किसी सॉफ्टवेयर के डिस्प्ले, कीबोर्ड, स्पीकर और वेबकैम जांचें।</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- 1. Display Dead Pixel Tester -->
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+            <h4 class="font-bold text-white flex items-center gap-2">🖥️ 1. Display Dead Pixel & Color Test</h4>
+            <p class="text-xs text-slate-400">स्क्रीन पर कोई दाग, लाइन या डेड पिक्सेल चेक करने के लिए फुल-स्क्रीन रंग चलाएं (क्लिक करके रंग बदलें)।</p>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <button onclick="startScreenTest('#ef4444')" class="px-3 py-2 rounded-lg bg-red-600 text-white text-xs font-bold">Red</button>
+              <button onclick="startScreenTest('#22c55e')" class="px-3 py-2 rounded-lg bg-green-600 text-white text-xs font-bold">Green</button>
+              <button onclick="startScreenTest('#3b82f6')" class="px-3 py-2 rounded-lg bg-blue-600 text-white text-xs font-bold">Blue</button>
+              <button onclick="startScreenTest('#ffffff')" class="px-3 py-2 rounded-lg bg-white text-slate-900 text-xs font-bold">White</button>
+              <button onclick="startScreenTest('#000000')" class="px-3 py-2 rounded-lg bg-black border border-slate-700 text-white text-xs font-bold">Black</button>
+            </div>
+          </div>
+
+          <!-- 2. Speaker Stereo Left/Right Tester -->
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+            <h4 class="font-bold text-white flex items-center gap-2">🔊 2. Speaker Left / Right Audio Test</h4>
+            <p class="text-xs text-slate-400">दोनों स्पीकर सही काम कर रहे हैं या नहीं, यह जांचने के लिए Left और Right चैनल टेस्ट करें।</p>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <button onclick="playStereoTone(-1)" class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold">◀ Left Speaker</button>
+              <button onclick="playStereoTone(0)" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold">◀ Both ▶</button>
+              <button onclick="playStereoTone(1)" class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold">Right Speaker ▶</button>
+            </div>
+            <p id="audio-status" class="text-xs text-emerald-400 h-4"></p>
+          </div>
+
+          <!-- 3. Live Keyboard Tester -->
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-white">⌨️ 3. Live Keyboard Key Tester</h4>
+              <button onclick="resetKeyboardTest()" class="text-xs text-amber-400 hover:underline">Reset Keys</button>
+            </div>
+            <p class="text-xs text-slate-400">अपने लैपटॉप का कोई भी बटन दबाएं—नीचे उसका नाम और कोड तुरंत दिखेगा:</p>
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-700 text-center">
+              <div id="last-key-display" class="text-2xl font-extrabold text-emerald-400">Press Any Key...</div>
+              <div id="pressed-keys-history" class="text-xs text-slate-400 mt-2 flex flex-wrap gap-1.5 justify-center min-h-[28px]"></div>
+            </div>
+          </div>
+
+          <!-- 4. Webcam & Microphone Live Tester -->
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-white">📷 4. Webcam & Mic Live Check</h4>
+              <div class="flex gap-2">
+                <button onclick="startMediaTest()" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold">Start Test</button>
+                <button onclick="stopMediaTest()" class="px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold">Stop</button>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 items-center">
+              <video id="webcam-preview" autoplay playsinline muted class="w-full h-32 bg-slate-900 rounded-lg object-cover border border-slate-800"></video>
+              <div class="space-y-2">
+                <p class="text-xs text-slate-300 font-medium">🎙️ Mic Sound Level:</p>
+                <div class="w-full h-4 bg-slate-800 rounded-full overflow-hidden">
+                  <div id="mic-level-bar" class="h-full bg-emerald-500 transition-all duration-75" style="width: 0%"></div>
+                </div>
+                <p id="media-status" class="text-xs text-slate-400">Click "Start Test" and allow browser permission.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 2: KL SAINI FINANCIAL SERVICES (ARN-254674) & E-BOOKS         -->
+    <!-- ===================================================================== -->
+    <section id="tab-finance" class="tab-section hidden space-y-8">
+      <!-- Header Card -->
+      <div class="bg-gradient-to-br from-slate-900 via-teal-950/60 to-slate-900 border border-teal-800/50 rounded-2xl p-6 sm:p-8 shadow-xl">
+        <div class="flex flex-col md:flex-row justify-between gap-6">
+          <div class="space-y-2 max-w-2xl">
+            <span class="inline-block px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold">
+              AMFI Registered Mutual Fund Distributor • ARN-254674
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              K L Saini Financial Services — वेल्थ क्रिएशन और वित्तीय साक्षरता
+            </h2>
+            <p class="text-slate-300 text-sm">
+              सही SIP प्लानिंग, रिटायरमेंट फंड, बच्चों की उच्च शिक्षा और टैक्स सेविंग (ELSS) के लिए पारदर्शी मार्गदर्शन।
+            </p>
+          </div>
+          <div class="flex flex-col justify-center gap-2">
+            <a href="https://wa.me/917206770673?text=Namaste%20KL%20Saini%20Ji%20(ARN-254674),%20mujhe%20Mutual%20Fund%20SIP%20start%20karni%20hai." target="_blank" class="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm text-center shadow-lg transition">
+              📊 Free Portfolio / SIP सलाह लें
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- 1-Crore Step-Up SIP Calculator -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-5 shadow-xl">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="text-lg font-bold text-emerald-400">💰 1-Crore Step-Up SIP Calculator</h3>
+            <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-full">Power of Compounding</span>
+          </div>
+
+          <div class="space-y-4 text-sm">
+            <div>
+              <div class="flex justify-between mb-1">
+                <label class="text-slate-300">मासिक SIP (Monthly Amount)</label>
+                <span class="font-bold text-white" id="sip-amt-val">₹ 5,000</span>
+              </div>
+              <input type="range" id="sip-amt" min="1000" max="100000" step="500" value="5000" oninput="calcStepUpSIP()" class="w-full accent-emerald-500">
+            </div>
+
+            <div>
+              <div class="flex justify-between mb-1">
+                <label class="text-slate-300">वार्षिक बढ़ोतरी (Annual Step-Up %)</label>
+                <span class="font-bold text-amber-300" id="sip-step-val">10%</span>
+              </div>
+              <input type="range" id="sip-step" min="0" max="25" step="1" value="10" oninput="calcStepUpSIP()" class="w-full accent-amber-500">
+            </div>
+
+            <div>
+              <div class="flex justify-between mb-1">
+                <label class="text-slate-300">अनुमानित रिटर्न (Expected Return % p.a.)</label>
+                <span class="font-bold text-emerald-300" id="sip-rate-val">12%</span>
+              </div>
+              <input type="range" id="sip-rate" min="8" max="18" step="0.5" value="12" oninput="calcStepUpSIP()" class="w-full accent-emerald-500">
+            </div>
+
+            <div>
+              <div class="flex justify-between mb-1">
+                <label class="text-slate-300">अवधि (Investment Tenure - Years)</label>
+                <span class="font-bold text-white" id="sip-years-val">20 Years</span>
+              </div>
+              <input type="range" id="sip-years" min="5" max="35" step="1" value="20" oninput="calcStepUpSIP()" class="w-full accent-emerald-500">
+            </div>
+          </div>
+
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3">
+            <div class="grid grid-cols-3 gap-2 text-center">
+              <div>
+                <p class="text-xs text-slate-400">कुल निवेश</p>
+                <p id="sip-invested" class="text-sm sm:text-base font-bold text-slate-200">₹ 34.36 L</p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400">अनुमानित लाभ</p>
+                <p id="sip-gain" class="text-sm sm:text-base font-bold text-emerald-400">₹ 65.08 L</p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400">कुल फंड वैल्यू</p>
+                <p id="sip-total" class="text-sm sm:text-base font-extrabold text-amber-400">₹ 99.44 L</p>
+              </div>
+            </div>
+            <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden flex">
+              <div id="sip-bar-inv" class="bg-slate-500 h-full" style="width: 35%"></div>
+              <div id="sip-bar-gain" class="bg-emerald-500 h-full" style="width: 65%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live AMFI Mutual Fund NAV Search -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl flex flex-col">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="text-lg font-bold text-emerald-400">🔍 Live Mutual Fund NAV Search</h3>
+            <span class="text-xs text-slate-400">AMFI Public Feed</span>
+          </div>
+          <p class="text-xs text-slate-400">किसी भी म्यूचुअल फंड स्कीम का नाम लिखकर उसका लेटेस्ट NAV चेक करें (जैसे: SBI Bluechip, HDFC Mid Cap, Parag Parikh):</p>
+          <div class="flex gap-2">
+            <input type="text" id="mf-search-input" placeholder="फंड का नाम लिखें (e.g. HDFC Flexi Cap)..." class="flex-grow bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500" onkeydown="if(event.key==='Enter') searchMutualFund()">
+            <button onclick="searchMutualFund()" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm">Search</button>
+          </div>
+          <div id="mf-results" class="flex-grow overflow-y-auto max-h-64 space-y-2 pr-1 text-sm">
+            <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-400 text-xs">
+              ऊपर सर्च बॉक्स में फंड का नाम लिखकर "Search" दबाएं — लाइव AMFI डेटाबेस से स्कीम कोड और लेटेस्ट NAV दिखेगा।
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Free E-Books Library by Dr. Vijendra Saini & K. L. Saini -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div>
+            <h3 class="text-xl font-bold text-amber-400">📚 नि:शुल्क वित्तीय साक्षरता ई-बुक्स (Free E-Books Library)</h3>
+            <p class="text-xs text-slate-400">लेखक: डॉ. विजेंद्र सैनी एवं के. एल. सैनी (ARN-254674) — आम निवेशकों को सरल हिंदी में जागरूक करने हेतु</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 flex flex-col justify-between space-y-4">
+            <div>
+              <span class="text-xs font-bold text-emerald-400">E-BOOK #1 • निवेश की शुरुआत</span>
+              <h4 class="font-bold text-white text-base mt-1">SIP से करोड़पति बनने का सरल गणित</h4>
+              <p class="text-xs text-slate-400 mt-2">छोटी बचत, कंपाउंडिंग की ताकत और बाजार के उतार-चढ़ाव में धैर्य रखने के व्यावहारिक सूत्र।</p>
+              <p class="text-xs text-amber-300/90 mt-2">✍️ डॉ. विजेंद्र सैनी & के. एल. सैनी</p>
+            </div>
+            <button onclick="openEbookModal('SIP से करोड़पति बनने का सरल गणित', 'लेखक: डॉ. विजेंद्र सैनी एवं के. एल. सैनी (ARN-254674)\n\nमुख्य बिंदु:\n1. महंगाई (Inflation) को मात देने के लिए केवल FD काफी नहीं है।\n2. हर महीने की 5,000 रुपये की Step-Up SIP 20 वर्षों में 1 करोड़ का लक्ष्य पूरा कर सकती है।\n3. बाजार गिरने पर SIP बंद न करें, क्योंकि गिरावट में आपको ज्यादा यूनिट्स मिलती हैं।\n4. अपने लक्ष्यों (बच्चों की पढ़ाई, रिटायरमेंट) को अलग-अलग फोलियो से जोड़ें।')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-emerald-600 text-white text-xs font-bold transition">
+              📖 सारांश पढ़ें / डाउनलोड करें
+            </button>
+          </div>
+
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 flex flex-col justify-between space-y-4">
+            <div>
+              <span class="text-xs font-bold text-emerald-400">E-BOOK #2 • सुरक्षित भविष्य</span>
+              <h4 class="font-bold text-white text-base mt-1">रिटायरमेंट प्लानिंग और SWP गाइड</h4>
+              <p class="text-xs text-slate-400 mt-2">रिटायरमेंट के बाद हर महीने नियमित पेंशन जैसी आय (Systematic Withdrawal Plan) कैसे बनाएं।</p>
+              <p class="text-xs text-amber-300/90 mt-2">✍️ डॉ. विजेंद्र सैनी & के. एल. सैनी</p>
+            </div>
+            <button onclick="openEbookModal('रिटायरमेंट प्लानिंग और SWP गाइड', 'लेखक: डॉ. विजेंद्र सैनी एवं के. एल. सैनी (ARN-254674)\n\nमुख्य बिंदु:\n1. रिटायरमेंट के बाद अपने फंड को पूरी तरह सेविंग खाते में निष्क्रिय न छोड़ें।\n2. SWP (Systematic Withdrawal Plan) के जरिए आप मूलधन को सुरक्षित रखते हुए हर महीने तय राशि निकाल सकते हैं।\n3. टर्म इंश्योरेंस और हेल्थ इंश्योरेंस को निवेश से हमेशा अलग रखें।')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-emerald-600 text-white text-xs font-bold transition">
+              📖 सारांश पढ़ें / डाउनलोड करें
+            </button>
+          </div>
+
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 flex flex-col justify-between space-y-4">
+            <div>
+              <span class="text-xs font-bold text-emerald-400">E-BOOK #3 • निवेशक सुरक्षा</span>
+              <h4 class="font-bold text-white text-base mt-1">फर्जी स्कीमों और साइबर ठगी से बचाव</h4>
+              <p class="text-xs text-slate-400 mt-2">रातों-रात पैसा दोगुना करने वाले ऐप्स, फर्जी टेलीग्राम टिप्स और डिजिटल अरेस्ट से बचने की मार्गदर्शिका।</p>
+              <p class="text-xs text-amber-300/90 mt-2">✍️ के. एल. सैनी (Cyber Volunteer)</p>
+            </div>
+            <button onclick="openEbookModal('फर्जी स्कीमों और साइबर ठगी से बचाव', 'लेखक: के. एल. सैनी (Cyber Volunteer & AMFI Distributor)\n\nमुख्य बिंदु:\n1. कोई भी SEBI रजिस्टर्ड संस्था गारंटीड डबल रिटर्न का दावा नहीं करती।\n2. किसी भी अनजान APK फाइल या स्क्रीन शेयरिंग ऐप को फोन में इंस्टॉल न करें।\n3. ठगी होने पर तुरंत 1930 पर कॉल करें या cybercrime.gov.in पर शिकायत दर्ज करें।')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-emerald-600 text-white text-xs font-bold transition">
+              📖 सारांश पढ़ें / डाउनलोड करें
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEBI Risk Disclaimer -->
+      <div class="bg-slate-900/70 border border-slate-800 rounded-xl p-4 text-xs text-slate-400 leading-relaxed">
+        <strong class="text-slate-300">SEBI / AMFI Disclaimer:</strong> Mutual Fund investments are subject to market risks, read all scheme related documents carefully. Past performance is not an indicator of future returns. K L Saini Financial Services (ARN-254674) is an AMFI Registered Mutual Fund Distributor.
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 3: LIVE MAINBOARD IPO & ALLOTMENT TRACKER (APPS SCRIPT)       -->
+    <!-- ===================================================================== -->
+    <section id="tab-ipo" class="tab-section hidden space-y-6">
+      <!-- Google Apps Script Live Feed Connection Panel (The exact part user asked about!) -->
+      <div class="bg-gradient-to-r from-indigo-950 via-slate-900 to-emerald-950 border border-indigo-700/60 rounded-2xl p-6 shadow-xl space-y-4">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div>
+            <span class="inline-block px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-bold mb-2">
+              🔗 यही वह Google Apps Script कनेक्शन है!
+            </span>
+            <h2 class="text-2xl font-extrabold text-white">Live Mainboard IPO & Allotment Tracker</h2>
+            <p class="text-xs sm:text-sm text-slate-300 mt-1">
+              अपनी Google Sheet + Google Apps Script Web App का URL नीचे पेस्ट करें (या कोड में सेट करें) ताकि नई Mainboard IPO लिस्ट, GMP और तारीखें अपने-आप लाइव अपडेट होती रहें।
+            </p>
+          </div>
+          <div class="flex items-center gap-3 shrink-0 bg-slate-950/80 px-4 py-2.5 rounded-xl border border-slate-800">
+            <label class="text-xs font-semibold text-slate-300 flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="mainboard-only-toggle" checked onchange="renderIPOs()" class="w-4 h-4 accent-emerald-500 rounded">
+              <span>केवल Mainboard IPO दिखाएं (SME छुपाएं)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Apps Script URL Input & Connect -->
+        <div class="flex flex-col sm:flex-row gap-2 pt-1">
+          <input type="url" id="gas-url-input" placeholder="https://script.google.com/macros/s/AKfycb.../exec (अपना Apps Script Web App URL यहाँ डालें)" class="flex-grow bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-indigo-400">
+          <button onclick="connectGoogleAppsScript()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs sm:text-sm whitespace-nowrap transition">
+            🔄 Live Data Fetch करें
+          </button>
+        </div>
+        <p class="text-[11px] text-slate-400">
+          💡 <strong>टिप:</strong> Google Apps Script Deploy करते समय <em>"Who has access: Anyone"</em> चुनें। अभी नीचे डेमो लाइव डेटा दिख रहा है।
+        </p>
+      </div>
+
+      <!-- IPO Cards Table / Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="ipo-list-container">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Direct Registrar & Exchange Allotment Links -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <h3 class="text-lg font-bold text-emerald-400">🎯 डायरेक्ट IPO अलॉटमेंट स्टेटस चेक लिंक्स (Official Registrars)</h3>
+        <p class="text-xs text-slate-400">अपना PAN नंबर डालकर सीधे रजिस्ट्रार की आधिकारिक वेबसाइट पर अलॉटमेंट चेक करें:</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-center text-xs font-bold">
+          <a href="https://ris.kfintech.com/ipostatus/" target="_blank" class="p-3.5 rounded-xl bg-slate-950 hover:bg-emerald-950 border border-slate-800 hover:border-emerald-500 text-white transition">
+            KFinTech IPO ↗
+          </a>
+          <a href="https://in.mpms.mufg.com/Initial_Offer/public-issues.html" target="_blank" class="p-3.5 rounded-xl bg-slate-950 hover:bg-emerald-950 border border-slate-800 hover:border-emerald-500 text-white transition">
+            MUFG (Link Intime) ↗
+          </a>
+          <a href="https://ipo.bigshareonline.com/IPO_Status.html" target="_blank" class="p-3.5 rounded-xl bg-slate-950 hover:bg-emerald-950 border border-slate-800 hover:border-emerald-500 text-white transition">
+            Bigshare Services ↗
+          </a>
+          <a href="https://www.purvashare.com/investor-service/ipo-query" target="_blank" class="p-3.5 rounded-xl bg-slate-950 hover:bg-emerald-950 border border-slate-800 hover:border-emerald-500 text-white transition">
+            Purva Sharegistry ↗
+          </a>
+          <a href="https://www.nseindia.com/invest/check-trades-bids-verify-ipo-bids" target="_blank" class="p-3.5 rounded-xl bg-slate-950 hover:bg-indigo-950 border border-slate-800 hover:border-indigo-500 text-indigo-300 transition">
+            NSE Bid Verify ↗
+          </a>
+          <a href="https://www.bseindia.com/investors/appli_check.aspx" target="_blank" class="p-3.5 rounded-xl bg-slate-950 hover:bg-indigo-950 border border-slate-800 hover:border-indigo-500 text-indigo-300 transition">
+            BSE IPO Status ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 4: 1930 CYBER SECURITY & AWARENESS CENTER                     -->
+    <!-- ===================================================================== -->
+    <section id="tab-cyber" class="tab-section hidden space-y-6">
+      <!-- Emergency 1930 Banner -->
+      <div class="bg-gradient-to-r from-rose-950 via-red-900/80 to-slate-900 border border-rose-700/70 rounded-2xl p-6 sm:p-8 shadow-xl">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="space-y-2">
+            <span class="inline-block px-3 py-1 rounded-full bg-rose-500/20 text-rose-200 text-xs font-bold">
+              🚨 साइबर जागरूकता अभियान • Cyber Volunteer K L Saini (Rewari)
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              साइबर ठगी होने पर तुरंत डायल करें: <span class="text-amber-300 underline">1930</span>
+            </h2>
+            <p class="text-sm text-rose-100/90 max-w-2xl">
+              गोल्डन आवर (पहले 1-2 घंटे) में 1930 पर कॉल करने या <strong>cybercrime.gov.in</strong> पर शिकायत दर्ज करने से ठगी गई रकम बैंक खाते में फ्रीज होने की संभावना सबसे अधिक होती है।
+            </p>
+          </div>
+          <div class="flex flex-col gap-2 shrink-0">
+            <a href="tel:1930" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-sm text-center shadow-lg">
+              📞 Call 1930 Helpline
+            </a>
+            <a href="https://cybercrime.gov.in/" target="_blank" class="px-6 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white font-semibold text-xs text-center border border-rose-500/40">
+              🌐 cybercrime.gov.in पोर्टल
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Phishing / Suspicious URL Scanner -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl">
+          <h3 class="text-lg font-bold text-rose-400">🔎 Suspicious / Phishing Link Scanner</h3>
+          <p class="text-xs text-slate-400">WhatsApp या SMS पर आए किसी संदिग्ध लिंक (KYC अपडेट, बिजली बिल, चालान, फ्री गिफ्ट) को खोलने से पहले यहाँ जांचें:</p>
+          <div class="flex gap-2">
+            <input type="text" id="url-scan-input" placeholder="यहाँ संदिग्ध लिंक पेस्ट करें (e.g. http://sbi-kyc-update.xyz)..." class="flex-grow bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-rose-500">
+            <button onclick="scanSuspiciousURL()" class="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm">Scan Link</button>
+          </div>
+          <div id="url-scan-result" class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 space-y-1">
+            लिंक डालकर "Scan Link" दबाएं — सुरक्षा स्कोर और संभावित खतरे की रिपोर्ट यहाँ दिखेगी।
+          </div>
+        </div>
+
+        <!-- Cyber Jagruk Nagrik Pledge Certificate Generator -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl">
+          <h3 class="text-lg font-bold text-emerald-400">🏅 'साइबर जागरूक नागरिक' शपथ प्रमाण-पत्र</h3>
+          <p class="text-xs text-slate-400">अपना नाम लिखें और साइबर सुरक्षा शपथ प्रमाण-पत्र तुरंत जेनरेट व डाउनलोड करें:</p>
+          <div class="flex gap-2">
+            <input type="text" id="cert-name-input" placeholder="आपका पूरा नाम (उदा. राजेश कुमार)" class="flex-grow bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+            <button onclick="generateCyberCert()" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm">Generate</button>
+          </div>
+
+          <div id="cyber-cert-box" class="hidden border-2 border-amber-500/70 bg-gradient-to-br from-slate-950 to-slate-900 rounded-xl p-5 text-center space-y-2">
+            <p class="text-xs uppercase tracking-widest text-amber-400 font-bold">Cyber Awareness Initiative • Rewari</p>
+            <h4 class="text-xl font-extrabold text-white">साइबर जागरूक नागरिक प्रमाण-पत्र</h4>
+            <p class="text-xs text-slate-300">यह प्रमाणित किया जाता है कि</p>
+            <p id="cert-holder-name" class="text-2xl font-extrabold text-emerald-400 underline decoration-amber-400">नाम</p>
+            <p class="text-xs text-slate-300 max-w-md mx-auto">
+              ने OTP, PIN, लिंक शेयर न करने तथा किसी भी साइबर अपराध की सूचना तुरंत <strong>1930</strong> पर देने की शपथ ली है।
+            </p>
+            <div class="pt-3 flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-800">
+              <span id="cert-date">दिनांक: --</span>
+              <span class="text-amber-300 font-semibold">Issued by: K L Saini (Cyber Volunteer)</span>
+            </div>
+            <button onclick="downloadCertImage()" class="mt-2 px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs">
+              ⬇️ प्रमाण-पत्र (PNG) डाउनलोड करें
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 5: FREE DIGITAL UTILITY STUDIO                                -->
+    <!-- ===================================================================== -->
+    <section id="tab-tools" class="tab-section hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <h2 class="text-2xl font-extrabold text-white">🛠️ Free Digital Utility Studio (सरकारी फॉर्म व रोज़मर्रा के टूल्स)</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">100% सुरक्षित — आपकी कोई भी फोटो या फाइल सर्वर पर अपलोड नहीं होती, सब कुछ आपके ब्राउज़र में ही प्रोसेस होता है।</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Tool 1: Govt Form 20KB/50KB Photo Compressor & A4 Passport Sheet -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+          <h3 class="text-lg font-bold text-emerald-400">📸 1. Govt Form Photo Compressor (20KB / 50KB) & A4 Sheet</h3>
+          <p class="text-xs text-slate-400">SSC, HSSC, UPSC या बैंक फॉर्म के लिए फोटो को तय KB में कंप्रेस करें या एक क्लिक में 8 पासपोर्ट फोटो की A4 शीट बनाएं:</p>
+          <input type="file" id="photo-upload" accept="image/*" onchange="processGovtPhoto()" class="block w-full text-xs text-slate-300 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-emerald-600 file:text-white hover:file:bg-emerald-500">
+          <div class="flex flex-wrap gap-2">
+            <button onclick="compressTargetKB(20)" class="px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-emerald-600 text-xs font-bold">Compress ~20 KB (Sign)</button>
+            <button onclick="compressTargetKB(50)" class="px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-emerald-600 text-xs font-bold">Compress ~50 KB (Photo)</button>
+            <button onclick="generateA4PassportSheet()" class="px-3.5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-xs font-bold">🖨️ 8-Copy A4 Sheet</button>
+          </div>
+          <div id="photo-tool-output" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3 text-center">
+            <p id="photo-size-info" class="text-xs text-emerald-400 font-bold"></p>
+            <img id="photo-result-preview" class="max-h-48 mx-auto rounded-lg border border-slate-700" alt="Processed Output">
+            <a id="photo-download-link" download="processed-photo.jpg" class="inline-block px-4 py-2 rounded-lg bg-emerald-600 text-white text-xs font-bold">⬇️ Download Image</a>
+          </div>
+        </div>
+
+        <!-- Tool 2: Instant Digital Visiting Card Generator -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+          <h3 class="text-lg font-bold text-amber-400">🪪 2. Instant Digital Visiting Card Maker</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+            <input type="text" id="vc-name" placeholder="आपका नाम (K L Saini)" value="K L Saini" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white">
+            <input type="text" id="vc-biz" placeholder="बिजनेस नाम" value="Khushboo Electronics" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white">
+            <input type="text" id="vc-phone" placeholder="मोबाइल नंबर" value="+91 7206770673" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white">
+            <input type="text" id="vc-addr" placeholder="पता / शहर" value="Sunderlal Market, Rewari" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white">
+          </div>
+          <button onclick="renderVisitingCard()" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs">
+            ✨ विजिटिंग कार्ड बनाएं व डाउनलोड करें
+          </button>
+          <canvas id="vc-canvas" width="500" height="280" class="w-full max-w-md rounded-xl border border-slate-700 shadow-lg"></canvas>
+          <button onclick="downloadVisitingCard()" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold">⬇️ Save Card (PNG)</button>
+        </div>
+
+        <!-- Tool 3: Typing Speed Test -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-bold text-emerald-400">⌨️ 3. Typing Speed Test (WPM & Accuracy)</h3>
+            <button onclick="resetTypingTest()" class="text-xs text-amber-400 hover:underline">New Text</button>
+          </div>
+          <p id="typing-quote" class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-sm text-slate-300 leading-relaxed select-none">
+            Smart investing and continuous learning are the true pillars of financial freedom in the digital era.
+          </p>
+          <textarea id="typing-input" rows="2" oninput="handleTyping()" placeholder="ऊपर लिखा वाक्य यहाँ टाइप करना शुरू करें..." class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-emerald-500"></textarea>
+          <div class="flex gap-4 text-xs font-bold">
+            <span class="px-3 py-1.5 rounded-lg bg-slate-950 text-emerald-400">Speed: <span id="wpm-val">0</span> WPM</span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-950 text-amber-400">Accuracy: <span id="acc-val">100</span>%</span>
+          </div>
+        </div>
+
+        <!-- Tool 4: Quick Daily Calculators (Age, EMI, Direct WhatsApp, QR) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+          <h3 class="text-lg font-bold text-indigo-400">⚡ 4. Quick Utilities (Age • Direct WhatsApp • QR Code)</h3>
+
+          <!-- Direct WhatsApp without saving number -->
+          <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+            <p class="text-xs font-bold text-emerald-400">💬 बिना नंबर सेव किए WhatsApp मैसेज भेजें:</p>
+            <div class="flex gap-2">
+              <input type="tel" id="wa-direct-num" placeholder="10 अंकों का मोबाइल नंबर (e.g. 98120XXXXX)" class="flex-grow bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+              <button onclick="openDirectWhatsApp()" class="px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold">Chat ↗</button>
+            </div>
+          </div>
+
+          <!-- Exact Age Calculator -->
+          <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+            <p class="text-xs font-bold text-amber-400">🎂 सरकारी फॉर्म के लिए सटीक उम्र (Exact Age) निकालें:</p>
+            <div class="flex gap-2 items-center">
+              <input type="date" id="dob-input" class="flex-grow bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+              <button onclick="calculateExactAge()" class="px-3.5 py-2 rounded-lg bg-amber-500 text-slate-950 text-xs font-bold">Calculate</button>
+            </div>
+            <p id="age-result" class="text-xs text-slate-300"></p>
+          </div>
+
+          <!-- Instant QR Code Generator -->
+          <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+            <p class="text-xs font-bold text-indigo-400">📱 Instant QR Code Generator (Link / UPI / Text):</p>
+            <div class="flex gap-2">
+              <input type="text" id="qr-text-input" placeholder="कोई भी लिंक या टेक्स्ट लिखें..." class="flex-grow bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+              <button onclick="generateQRCode()" class="px-3.5 py-2 rounded-lg bg-indigo-600 text-white text-xs font-bold">QR बनाएं</button>
+            </div>
+            <div id="qr-output-box" class="hidden pt-2 text-center">
+              <img id="qr-img" class="w-32 h-32 mx-auto rounded-lg bg-white p-1.5" alt="QR Code">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Resume / Biodata Builder -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <h3 class="text-lg font-bold text-emerald-400">📄 5. Quick Resume / Marriage Biodata Print Builder</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <input type="text" id="bio-name" placeholder="पूरा नाम" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-2.5 text-white">
+          <input type="text" id="bio-qual" placeholder="योग्यता (Qualification - e.g. B.Tech / M.Com)" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-2.5 text-white">
+          <input type="text" id="bio-contact" placeholder="मोबाइल और पता (Rewari, Haryana)" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-2.5 text-white">
+        </div>
+        <textarea id="bio-details" rows="2" placeholder="अतिरिक्त विवरण (अनुभव / पारिवारिक विवरण / कौशल)..." class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white"></textarea>
+        <button onclick="previewAndPrintBiodata()" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs">
+          🖨️ Biodata / Resume Preview & Print PDF
+        </button>
+        <div id="print-area" class="hidden p-6 rounded-xl bg-white text-slate-900 space-y-2 border"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Full-Screen Display Dead Pixel Overlay -->
+  <div id="screen-test-overlay" onclick="cycleScreenColor()" class="fixed inset-0 z-50 hidden cursor-pointer flex items-center justify-center">
+    <div class="bg-black/60 text-white px-4 py-2 rounded-full text-xs font-bold backdrop-blur-sm select-none">
+      रंग बदलने के लिए क्लिक करें • बाहर निकलने के लिए ESC दबाएं या डबल-क्लिक करें
+    </div>
+  </div>
+
+  <!-- E-Book Reader Modal -->
+  <div id="ebook-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h4 id="ebook-modal-title" class="font-bold text-amber-400 text-lg">E-Book Title</h4>
+        <button onclick="closeEbookModal()" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
+      </div>
+      <pre id="ebook-modal-body" class="whitespace-pre-wrap font-sans text-sm text-slate-200 leading-relaxed bg-slate-950 p-4 rounded-xl border border-slate-800"></pre>
+      <div class="flex justify-end gap-2">
+        <button onclick="downloadEbookText()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold">⬇️ Download Summary (.txt)</button>
+        <button onclick="closeEbookModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-bold">बंद करें</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 border-t border-slate-800 py-6 px-4 text-center text-xs text-slate-400 space-y-1.5">
+    <p class="font-bold text-slate-200">K L Saini Digital, Tech & Financial Hub — Rewari (Haryana)</p>
+    <p>Khushboo Electronics (Sunderlal Market, Near Everest Cinema) • Mutual Fund Distributor (ARN-254674) • Cyber Volunteer (1930)</p>
+    <p class="text-slate-500">Contact / WhatsApp: +91 7206770673 | Hosted Ready for GitHub Pages</p>
+  </footer>
+
+  <script>
+    // =========================================================================
+    // 1. NAVIGATION & TOAST HELPERS
+    // =========================================================================
+    function showToast(msg, icon = '✅') {
+      const box = document.getElementById('toast-box');
+      document.getElementById('toast-msg').textContent = msg;
+      document.getElementById('toast-icon').textContent = icon;
+      box.classList.remove('hidden');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => box.classList.add('hidden'), 3200);
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-section').forEach(el => el.classList.add('hidden'));
+      document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('tab-active');
+        btn.classList.add('bg-slate-800/80', 'text-slate-300');
+      });
+      const activeBtn = document.getElementById('btn-' + tabId);
+      activeBtn.classList.add('tab-active');
+      activeBtn.classList.remove('bg-slate-800/80', 'text-slate-300');
+    }
+
+    // =========================================================================
+    // 2. KHUSHBOO ELECTRONICS LAPTOP CATALOG (WITHOUT PRICES) & TESTER
+    // =========================================================================
+    const laptopStock = [
+      {
+        name: "Dell Latitude 5420 (11th Gen)",
+        specs: "Intel Core i5-1145G7 • 16GB RAM • 512GB NVMe SSD • 14\" FHD IPS • Backlit Keyboard",
+        badge: "Best Seller • Business Series"
+      },
+      {
+        name: "HP EliteBook 745 G6 (Ryzen 7 Pro)",
+        specs: "AMD Ryzen 7 Pro 3700U • 16GB RAM • 512GB SSD • Metal Body • Fingerprint & Bang Olufsen Audio",
+        badge: "Premium Metal Build"
+      },
+      {
+        name: "Lenovo ThinkPad V330 / T490",
+        specs: "Intel Core i5 8th/10th Gen • 8GB/16GB RAM • 256GB/512GB SSD • Military-Grade Durability",
+        badge: "Office & Student Choice"
+      },
+      {
+        name: "Dell Latitude 7490 Ultrabook",
+        specs: "Intel Core i7 8th Gen • 16GB RAM • 512GB NVMe • Carbon Fiber Finish • Lightweight",
+        badge: "Ultra Slim • A++ Condition"
+      },
+      {
+        name: "HP ProBook 440 G8",
+        specs: "Intel Core i5 11th Gen • 16GB RAM • 512GB SSD • Windows 11 Pro • Type-C Charging",
+        badge: "Latest Generation"
+      },
+      {
+        name: "Custom Bulk / Office Setup",
+        specs: "स्कूल, कोचिंग सेंटर, CSC केंद्र या ऑफिस के लिए 5 से 50 लैपटॉप/डेस्कटॉप का थोक स्टॉक उपलब्ध",
+        badge: "Wholesale & Retail Rewari"
+      }
+    ];
+
+    function renderLaptops() {
+      const grid = document.getElementById('laptop-grid');
+      grid.innerHTML = laptopStock.map(item => {
+        const waText = encodeURIComponent(`Namaste Khushboo Electronics (Rewari), mujhe "${item.name}" ka best price aur availability janni hai.`);
+        return `
+          <div class="bg-slate-900 border border-slate-800 hover:border-emerald-500/60 rounded-2xl p-5 flex flex-col justify-between space-y-4 shadow-lg transition">
+            <div class="space-y-2">
+              <span class="inline-block px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 text-[11px] font-bold">
+                ${item.badge}
+              </span>
+              <h4 class="text-lg font-extrabold text-white">${item.name}</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">${item.specs}</p>
+            </div>
+            <div class="pt-2 border-t border-slate-800 flex items-center justify-between gap-2">
+              <span class="text-[11px] text-amber-300 font-semibold">Best Deal on Chat</span>
+              <a href="https://wa.me/917206770673?text=${waText}" target="_blank" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition">
+                💬 Check Price on WhatsApp
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Screen Dead Pixel Tester
+    const screenColors = ['#ef4444', '#22c55e', '#3b82f6', '#ffffff', '#000000'];
+    let currentColorIdx = 0;
+
+    function startScreenTest(hex) {
+      currentColorIdx = screenColors.indexOf(hex);
+      if (currentColorIdx < 0) currentColorIdx = 0;
+      const overlay = document.getElementById('screen-test-overlay');
+      overlay.style.backgroundColor = screenColors[currentColorIdx];
+      overlay.classList.remove('hidden');
+      if (overlay.requestFullscreen) {
+        overlay.requestFullscreen().catch(() => {});
+      }
+    }
+
+    function cycleScreenColor() {
+      currentColorIdx = (currentColorIdx + 1) % screenColors.length;
+      document.getElementById('screen-test-overlay').style.backgroundColor = screenColors[currentColorIdx];
+    }
+
+    document.getElementById('screen-test-overlay').addEventListener('dblclick', closeScreenTest);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeScreenTest();
+      // Also capture keyboard test keys when on laptop tab
+      const laptopSection = document.getElementById('tab-laptop');
+      if (!laptopSection.classList.contains('hidden')) {
+        document.getElementById('last-key-display').textContent = `${e.key === ' ' ? 'Spacebar' : e.key} (${e.code})`;
+        const hist = document.getElementById('pressed-keys-history');
+        const chip = document.createElement('span');
+        chip.className = 'px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-mono';
+        chip.textContent = e.key === ' ' ? 'SPACE' : e.key.toUpperCase();
+        hist.prepend(chip);
+        if (hist.children.length > 14) hist.removeChild(hist.lastChild);
+      }
+    });
+
+    function closeScreenTest() {
+      document.getElementById('screen-test-overlay').classList.add('hidden');
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    function resetKeyboardTest() {
+      document.getElementById('last-key-display').textContent = 'Press Any Key...';
+      document.getElementById('pressed-keys-history').innerHTML = '';
+    }
+
+    // Speaker Stereo Left/Right Test (Web Audio API)
+    function playStereoTone(panValue) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const panner = ctx.createStereoPanner();
+        const gain = ctx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(panValue === -1 ? 440 : panValue === 1 ? 587.33 : 523.25, ctx.currentTime);
+        panner.pan.setValueAtTime(panValue, ctx.currentTime);
+        gain.gain.setValueAtTime(0.25, ctx.currentTime);
+
+        osc.connect(panner);
+        panner.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start();
+        setTimeout(() => {
+          osc.stop();
+          ctx.close();
+        }, 700);
+
+        const label = panValue === -1 ? 'Left Speaker बजा रहा है...' : panValue === 1 ? 'Right Speaker बजा रहा है...' : 'दोनों (Left + Right) बज रहे हैं...';
+        document.getElementById('audio-status').textContent = '🔊 ' + label;
+      } catch (err) {
+        showToast('Audio test browser blocked or unsupported.', '⚠️');
+      }
+    }
+
+    // Webcam & Mic Live Test
+    let activeMediaStream = null;
+    let micAnimFrame = null;
+
+    async function startMediaTest() {
+      try {
+        stopMediaTest();
+        activeMediaStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        const video = document.getElementById('webcam-preview');
+        video.srcObject = activeMediaStream;
+        document.getElementById('media-status').textContent = '✅ कैमरा और माइक लाइव चालू हैं!';
+
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const source = audioCtx.createMediaStreamSource(activeMediaStream);
+        const analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 64;
+        source.connect(analyser);
+        const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+        function updateMic() {
+          if (!activeMediaStream) return;
+          analyser.getByteFrequencyData(dataArray);
+          const avg = dataArray.reduce((a, b) => a + b, 0) / dataArray.length;
+          const pct = Math.min(100, Math.round((avg / 128) * 100));
+          document.getElementById('mic-level-bar').style.width = pct + '%';
+          micAnimFrame = requestAnimationFrame(updateMic);
+        }
+        updateMic();
+      } catch (err) {
+        document.getElementById('media-status').textContent = '⚠️ कैमरा/माइक परमिशन नहीं मिली या डिवाइस उपलब्ध नहीं है।';
+      }
+    }
+
+    function stopMediaTest() {
+      if (activeMediaStream) {
+        activeMediaStream.getTracks().forEach(t => t.stop());
+        activeMediaStream = null;
+      }
+      if (micAnimFrame) cancelAnimationFrame(micAnimFrame);
+      document.getElementById('webcam-preview').srcObject = null;
+      document.getElementById('mic-level-bar').style.width = '0%';
+    }
+
+    // =========================================================================
+    // 3. MUTUAL FUND STEP-UP SIP CALCULATOR, LIVE AMFI NAV & E-BOOKS
+    // =========================================================================
+    function formatINR(num) {
+      if (num >= 10000000) return '₹ ' + (num / 10000000).toFixed(2) + ' Cr';
+      if (num >= 100000) return '₹ ' + (num / 100000).toFixed(2) + ' L';
+      return '₹ ' + Math.round(num).toLocaleString('en-IN');
+    }
+
+    function calcStepUpSIP() {
+      const monthly = parseFloat(document.getElementById('sip-amt').value);
+      const stepPct = parseFloat(document.getElementById('sip-step').value) / 100;
+      const annualRate = parseFloat(document.getElementById('sip-rate').value) / 100;
+      const years = parseInt(document.getElementById('sip-years').value, 10);
+
+      document.getElementById('sip-amt-val').textContent = '₹ ' + monthly.toLocaleString('en-IN');
+      document.getElementById('sip-step-val').textContent = Math.round(stepPct * 100) + '%';
+      document.getElementById('sip-rate-val').textContent = (annualRate * 100).toFixed(1) + '%';
+      document.getElementById('sip-years-val').textContent = years + ' Years';
+
+      const monthlyRate = annualRate / 12;
+      let currentMonthly = monthly;
+      let totalInvested = 0;
+      let corpus = 0;
+
+      for (let y = 1; y <= years; y++) {
+        for (let m = 1; m <= 12; m++) {
+          totalInvested += currentMonthly;
+          corpus = (corpus + currentMonthly) * (1 + monthlyRate);
+        }
+        currentMonthly = currentMonthly * (1 + stepPct);
+      }
+
+      const gain = Math.max(0, corpus - totalInvested);
+      const invRatio = Math.round((totalInvested / corpus) * 100);
+
+      document.getElementById('sip-invested').textContent = formatINR(totalInvested);
+      document.getElementById('sip-gain').textContent = formatINR(gain);
+      document.getElementById('sip-total').textContent = formatINR(corpus);
+      document.getElementById('sip-bar-inv').style.width = invRatio + '%';
+      document.getElementById('sip-bar-gain').style.width = (100 - invRatio) + '%';
+    }
+
+    async function searchMutualFund() {
+      const q = document.getElementById('mf-search-input').value.trim();
+      const box = document.getElementById('mf-results');
+      if (!q) {
+        showToast('कृपया म्यूचुअल फंड का नाम लिखें', '🔍');
+        return;
+      }
+      box.innerHTML = '<p class="text-xs text-emerald-400 animate-pulse">AMFI डेटाबेस से सर्च हो रहा है...</p>';
+      try {
+        const res = await fetch(`https://api.mfapi.in/mf/search?q=${encodeURIComponent(q)}`);
+        const data = await res.json();
+        if (!data || data.length === 0) {
+          box.innerHTML = '<p class="text-xs text-amber-300">कोई फंड नहीं मिला। कृपया दूसरा नाम लिखें।</p>';
+          return;
+        }
+        const top5 = data.slice(0, 6);
+        box.innerHTML = top5.map(f => `
+          <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between gap-2">
+            <div>
+              <p class="font-semibold text-white text-xs">${f.schemeName}</p>
+              <p class="text-[11px] text-slate-400">Scheme Code: ${f.schemeCode}</p>
+            </div>
+            <button onclick="fetchSchemeNAV(${f.schemeCode}, this)" class="px-2.5 py-1.5 rounded-lg bg-emerald-600/20 border border-emerald-500/40 text-emerald-300 text-[11px] font-bold shrink-0">
+              Check NAV
+            </button>
+          </div>
+        `).join('');
+      } catch (e) {
+        box.innerHTML = '<p class="text-xs text-rose-400">नेटवर्क त्रुटि: लाइव AMFI API लोड नहीं हो सकी।</p>';
+      }
+    }
+
+    async function fetchSchemeNAV(code, btn) {
+      btn.textContent = '...';
+      try {
+        const res = await fetch(`https://api.mfapi.in/mf/${code}`);
+        const json = await res.json();
+        if (json && json.data && json.data[0]) {
+          btn.textContent = `₹${json.data[0].nav} (${json.data[0].date})`;
+          btn.classList.add('bg-emerald-600', 'text-white');
+        }
+      } catch (e) {
+        btn.textContent = 'Error';
+      }
+    }
+
+    let currentEbookContent = { title: '', body: '' };
+    function openEbookModal(title, body) {
+      currentEbookContent = { title, body };
+      document.getElementById('ebook-modal-title').textContent = title;
+      document.getElementById('ebook-modal-body').textContent = body;
+      document.getElementById('ebook-modal').classList.remove('hidden');
+    }
+    function closeEbookModal() {
+      document.getElementById('ebook-modal').classList.add('hidden');
+    }
+    function downloadEbookText() {
+      const blob = new Blob([`${currentEbookContent.title}\n\n${currentEbookContent.body}`], { type: 'text/plain;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'KL-Saini-Financial-Guide.txt';
+      a.click();
+    }
+
+    // =========================================================================
+    // 4. MAINBOARD IPO TRACKER & GOOGLE APPS SCRIPT CONNECTION
+    // =========================================================================
+    let ipoDataset = [
+      {
+        company: "NTPC Green Energy Ltd",
+        category: "Mainboard",
+        status: "Open",
+        priceBand: "₹102 - ₹108",
+        lotSize: "138 Shares",
+        gmp: "+₹14 (13%)",
+        dates: "19 Nov - 22 Nov"
+      },
+      {
+        company: "Enviro Infra Engineers Ltd",
+        category: "Mainboard",
+        status: "Upcoming",
+        priceBand: "₹140 - ₹148",
+        lotSize: "101 Shares",
+        gmp: "+₹32 (21%)",
+        dates: "22 Nov - 26 Nov"
+      },
+      {
+        company: "Zinka Logistics (BlackBuck)",
+        category: "Mainboard",
+        status: "Closed",
+        priceBand: "₹259 - ₹273",
+        lotSize: "54 Shares",
+        gmp: "+₹10 (4%)",
+        dates: "Allotment Out"
+      },
+      {
+        company: "Demo SME Tech Solutions",
+        category: "SME",
+        status: "Open",
+        priceBand: "₹85 - ₹90",
+        lotSize: "1600 Shares",
+        gmp: "+₹18 (20%)",
+        dates: "SME Issue"
+      }
+    ];
+
+    function renderIPOs() {
+      const mainboardOnly = document.getElementById('mainboard-only-toggle').checked;
+      const filtered = mainboardOnly ? ipoDataset.filter(i => (i.category || 'Mainboard').toLowerCase() === 'mainboard') : ipoDataset;
+      const container = document.getElementById('ipo-list-container');
+
+      container.innerHTML = filtered.map(ipo => {
+        const statusColor = ipo.status === 'Open' ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+          : ipo.status === 'Upcoming' ? 'bg-amber-500/20 text-amber-300 border-amber-500/40'
+          : 'bg-slate-800 text-slate-300 border-slate-700';
+
+        return `
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3 shadow-lg">
+            <div class="flex items-start justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${statusColor}">
+                ● ${ipo.status} (${ipo.category || 'Mainboard'})
+              </span>
+              <span class="text-xs font-bold text-emerald-400">GMP: ${ipo.gmp || 'N/A'}</span>
+            </div>
+            <h4 class="text-lg font-extrabold text-white">${ipo.company}</h4>
+            <div class="grid grid-cols-2 gap-2 text-xs bg-slate-950 p-3 rounded-xl border border-slate-800">
+              <div>
+                <p class="text-slate-400">Price Band</p>
+                <p class="font-bold text-white">${ipo.priceBand}</p>
+              </div>
+              <div>
+                <p class="text-slate-400">Lot Size</p>
+                <p class="font-bold text-white">${ipo.lotSize}</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between text-xs pt-1">
+              <span class="text-slate-400">📅 ${ipo.dates}</span>
+              <a href="https://wa.me/917206770673?text=${encodeURIComponent('Namaste KL Saini Ji, mujhe ' + ipo.company + ' IPO apply / Demat account ke bare me puchna hai.')}" target="_blank" class="text-emerald-400 hover:underline font-bold">
+                Demat / IPO Help ↗
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function connectGoogleAppsScript() {
+      const url = document.getElementById('gas-url-input').value.trim();
+      if (!url || !url.startsWith('https://script.google.com/')) {
+        showToast('कृपया सही Google Apps Script Web App URL डालें!', '⚠️');
+        return;
+      }
+      try {
+        showToast('Google Apps Script से लाइव डेटा लोड हो रहा है...', '⏳');
+        const res = await fetch(url);
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          ipoDataset = data;
+          renderIPOs();
+          const badge = document.getElementById('gas-status-badge');
+          badge.textContent = '🟢 Live Apps Script Connected!';
+          badge.className = 'px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-medium';
+          showToast('लाइव IPO डेटा सफलतापूर्वक अपडेट हो गया!', '✅');
+        } else {
+          showToast('JSON डेटा खाली है — अपनी Google Sheet चेक करें।', '⚠️');
+        }
+      } catch (err) {
+        showToast('Apps Script कनेक्ट नहीं हुआ — सुनिश्चित करें कि Access "Anyone" पर सेट है।', '❌');
+      }
+    }
+
+    // =========================================================================
+    // 5. 1930 CYBER SECURITY TOOLS
+    // =========================================================================
+    function scanSuspiciousURL() {
+      const raw = document.getElementById('url-scan-input').value.trim();
+      const resBox = document.getElementById('url-scan-result');
+      if (!raw) {
+        showToast('कृपया जांचने के लिए कोई लिंक पेस्ट करें', '🔎');
+        return;
+      }
+      let score = 100;
+      let warnings = [];
+      const lower = raw.toLowerCase();
+
+      if (!lower.startsWith('https://')) {
+        score -= 30;
+        warnings.push('⚠️ यह सुरक्षित HTTPS की जगह असुरक्षित HTTP या अधूरा लिंक है।');
+      }
+      if (/\d+\.\d+\.\d+\.\d+/.test(lower)) {
+        score -= 40;
+        warnings.push('🚨 डोमेन नाम की जगह सीधा IP Address इस्तेमाल किया गया है (अत्यधिक संदिग्ध)।');
+      }
+      const riskyTLDs = ['.xyz', '.top', '.tk', '.ml', '.ga', '.cf', '.gq', '.click', '.loan', '.apk'];
+      if (riskyTLDs.some(ext => lower.includes(ext))) {
+        score -= 35;
+        warnings.push('🚨 संदिग्ध एक्सटेंशन (.xyz / .top / .apk आदि) पाया गया है।');
+      }
+      const shorteners = ['bit.ly', 'tinyurl', 'cutt.ly', 'rb.gy', 't.co'];
+      if (shorteners.some(s => lower.includes(s))) {
+        score -= 20;
+        warnings.push('⚠️ यह एक शॉर्ट लिंक (URL Shortener) है, असली वेबसाइट छुपी हुई है।');
+      }
+      if ((lower.includes('sbi') || lower.includes('hdfc') || lower.includes('kyc') || lower.includes('challan') || lower.includes('electricity')) && !lower.includes('.gov.in') && !lower.includes('.co.in')) {
+        score -= 30;
+        warnings.push('🚨 बैंक/सरकारी सेवा जैसा नकली नाम (Phishing Spoof) होने का खतरा है!');
+      }
+
+      score = Math.max(5, score);
+      if (warnings.length === 0) {
+        resBox.innerHTML = `<p class="text-emerald-400 font-bold">✅ Safety Score: ${score}/100 — पहली नज़र में कोई बड़ा तकनीकी खतरा नहीं दिखा, फिर भी OTP/PIN कभी साझा न करें।</p>`;
+      } else {
+        resBox.innerHTML = `<p class="text-rose-400 font-bold mb-1">🚨 Safety Score: ${score}/100 — सावधान! यह संदिग्ध लिंक हो सकता है:</p>` + warnings.map(w => `<p>${w}</p>`).join('');
+      }
+    }
+
+    function generateCyberCert() {
+      const name = document.getElementById('cert-name-input').value.trim();
+      if (!name) {
+        showToast('कृपया प्रमाण-पत्र के लिए अपना नाम लिखें', '✍️');
+        return;
+      }
+      document.getElementById('cert-holder-name').textContent = name;
+      document.getElementById('cert-date').textContent = 'दिनांक: ' + new Date().toLocaleDateString('hi-IN');
+      document.getElementById('cyber-cert-box').classList.remove('hidden');
+      showToast('साइबर जागरूकता प्रमाण-पत्र तैयार है!', '🏅');
+    }
+
+    function downloadCertImage() {
+      const name = document.getElementById('cert-holder-name').textContent;
+      const canvas = document.createElement('canvas');
+      canvas.width = 900;
+      canvas.height = 560;
+      const ctx = canvas.getContext('2d');
+
+      ctx.fillStyle = '#0f172a';
+      ctx.fillRect(0, 0, 900, 560);
+      ctx.strokeStyle = '#f59e0b';
+      ctx.lineWidth = 10;
+      ctx.strokeRect(24, 24, 852, 512);
+
+      ctx.fillStyle = '#fbbf24';
+      ctx.font = 'bold 20px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('CYBER AWARENESS INITIATIVE • REWARI (1930 HELPLINE)', 450, 90);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 38px sans-serif';
+      ctx.fillText('साइबर जागरूक नागरिक प्रमाण-पत्र', 450, 155);
+
+      ctx.fillStyle = '#cbd5e1';
+      ctx.font = '22px sans-serif';
+      ctx.fillText('यह प्रमाणित किया जाता है कि', 450, 220);
+
+      ctx.fillStyle = '#34d399';
+      ctx.font = 'bold 44px sans-serif';
+      ctx.fillText(name, 450, 285);
+
+      ctx.fillStyle = '#e2e8f0';
+      ctx.font = '20px sans-serif';
+      ctx.fillText('ने डिजिटल सुरक्षा नियमों का पालन करने और साइबर ठगी की सूचना', 450, 350);
+      ctx.fillText('तुरंत 1930 या cybercrime.gov.in पर देने की शपथ ली है।', 450, 385);
+
+      ctx.fillStyle = '#fbbf24';
+      ctx.font = 'bold 20px sans-serif';
+      ctx.fillText('Issued by: K L Saini (Cyber Volunteer, Rewari)', 450, 470);
+
+      const a = document.createElement('a');
+      a.href = canvas.toDataURL('image/png');
+      a.download = `Cyber-Jagruk-Certificate-${name}.png`;
+      a.click();
+    }
+
+    // =========================================================================
+    // 6. FREE DIGITAL UTILITY STUDIO TOOLS
+    // =========================================================================
+    let uploadedImgObj = null;
+
+    function processGovtPhoto() {
+      const file = document.getElementById('photo-upload').files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          uploadedImgObj = img;
+          showToast('फोटो लोड हो गई! अब नीचे 20KB, 50KB या A4 Sheet चुनें।', '📸');
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function compressTargetKB(targetKB) {
+      if (!uploadedImgObj) {
+        showToast('पहले ऊपर से फोटो अपलोड करें!', '⚠️');
+        return;
+      }
+      const canvas = document.createElement('canvas');
+      const maxDim = targetKB <= 25 ? 320 : 480;
+      const scale = Math.min(1, maxDim / Math.max(uploadedImgObj.width, uploadedImgObj.height));
+      canvas.width = Math.round(uploadedImgObj.width * scale);
+      canvas.height = Math.round(uploadedImgObj.height * scale);
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(uploadedImgObj, 0, 0, canvas.width, canvas.height);
+
+      let quality = 0.85;
+      let dataUrl = canvas.toDataURL('image/jpeg', quality);
+      while ((dataUrl.length * 0.75) / 1024 > targetKB && quality > 0.1) {
+        quality -= 0.08;
+        dataUrl = canvas.toDataURL('image/jpeg', quality);
+      }
+      const finalKB = Math.round((dataUrl.length * 0.75) / 1024);
+      document.getElementById('photo-size-info').textContent = `✅ Ready! File Size: ~${finalKB} KB (${canvas.width}x${canvas.height}px)`;
+      document.getElementById('photo-result-preview').src = dataUrl;
+      const link = document.getElementById('photo-download-link');
+      link.href = dataUrl;
+      link.download = `Govt-Form-${finalKB}KB.jpg`;
+      document.getElementById('photo-tool-output').classList.remove('hidden');
+    }
+
+    function generateA4PassportSheet() {
+      if (!uploadedImgObj) {
+        showToast('पहले अपनी पासपोर्ट फोटो अपलोड करें!', '⚠️');
+        return;
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = 1240;
+      canvas.height = 1754;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const pw = 240, ph = 300, gap = 45, startX = 70, startY = 80;
+      for (let row = 0; row < 2; row++) {
+        for (let col = 0; col < 4; col++) {
+          const x = startX + col * (pw + gap);
+          const y = startY + row * (ph + gap);
+          ctx.drawImage(uploadedImgObj, x, y, pw, ph);
+          ctx.strokeStyle = '#94a3b8';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(x, y, pw, ph);
+        }
+      }
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+      document.getElementById('photo-size-info').textContent = '✅ 8-Copy A4 Passport Sheet Ready to Print!';
+      document.getElementById('photo-result-preview').src = dataUrl;
+      const link = document.getElementById('photo-download-link');
+      link.href = dataUrl;
+      link.download = 'A4-8-Passport-Photos.jpg';
+      document.getElementById('photo-tool-output').classList.remove('hidden');
+    }
+
+    // Digital Visiting Card Maker
+    function renderVisitingCard() {
+      const name = document.getElementById('vc-name').value || 'K L Saini';
+      const biz = document.getElementById('vc-biz').value || 'Khushboo Electronics';
+      const phone = document.getElementById('vc-phone').value || '+91 7206770673';
+      const addr = document.getElementById('vc-addr').value || 'Rewari, Haryana';
+
+      const canvas = document.getElementById('vc-canvas');
+      const ctx = canvas.getContext('2d');
+
+      const grad = ctx.createLinearGradient(0, 0, 500, 280);
+      grad.addColorStop(0, '#0f172a');
+      grad.addColorStop(1, '#064e3b');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 500, 280);
+
+      ctx.fillStyle = '#10b981';
+      ctx.fillRect(0, 0, 12, 280);
+
+      ctx.fillStyle = '#fbbf24';
+      ctx.font = 'bold 16px sans-serif';
+      ctx.fillText(biz.toUpperCase(), 35, 55);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 30px sans-serif';
+      ctx.fillText(name, 35, 110);
+
+      ctx.fillStyle = '#cbd5e1';
+      ctx.font = '16px sans-serif';
+      ctx.fillText('📞 ' + phone, 35, 175);
+      ctx.fillText('📍 ' + addr, 35, 210);
+
+      ctx.fillStyle = '#34d399';
+      ctx.font = '12px sans-serif';
+      ctx.fillText('Generated via K L Saini Digital Hub', 35, 255);
+    }
+
+    function downloadVisitingCard() {
+      renderVisitingCard();
+      const a = document.createElement('a');
+      a.href = document.getElementById('vc-canvas').toDataURL('image/png');
+      a.download = 'Digital-Visiting-Card.png';
+      a.click();
+    }
+
+    // Typing Speed Test
+    const typingQuotes = [
+      "Smart investing and continuous learning are the true pillars of financial freedom in the digital era.",
+      "Always verify suspicious links before clicking and dial 1930 immediately in case of any cyber fraud.",
+      "Business class laptops offer superior durability, crisp displays, and reliable performance for daily work."
+    ];
+    let typingStartTime = null;
+
+    function resetTypingTest() {
+      const next = typingQuotes[Math.floor(Math.random() * typingQuotes.length)];
+      document.getElementById('typing-quote').textContent = next;
+      document.getElementById('typing-input').value = '';
+      document.getElementById('wpm-val').textContent = '0';
+      document.getElementById('acc-val').textContent = '100';
+      typingStartTime = null;
+    }
+
+    function handleTyping() {
+      const target = document.getElementById('typing-quote').textContent.trim();
+      const typed = document.getElementById('typing-input').value;
+      if (!typingStartTime && typed.length > 0) typingStartTime = Date.now();
+      if (!typingStartTime) return;
+
+      const mins = Math.max(0.05, (Date.now() - typingStartTime) / 60000);
+      const words = typed.trim().split(/\s+/).filter(Boolean).length;
+      const wpm = Math.round(words / mins);
+
+      let correct = 0;
+      for (let i = 0; i < typed.length; i++) {
+        if (typed[i] === target[i]) correct++;
+      }
+      const acc = typed.length > 0 ? Math.round((correct / typed.length) * 100) : 100;
+
+      document.getElementById('wpm-val').textContent = wpm;
+      document.getElementById('acc-val').textContent = acc;
+    }
+
+    // Direct WhatsApp, Age & QR Code
+    function openDirectWhatsApp() {
+      const num = document.getElementById('wa-direct-num').value.replace(/\D/g, '');
+      if (num.length < 10) {
+        showToast('सही 10 अंकों का मोबाइल नंबर डालें', '⚠️');
+        return;
+      }
+      const full = num.length === 10 ? '91' + num : num;
+      window.open(`https://wa.me/${full}`, '_blank');
+    }
+
+    function calculateExactAge() {
+      const dobVal = document.getElementById('dob-input').value;
+      if (!dobVal) {
+        showToast('कृपया जन्मतिथि (DOB) चुनें', '🎂');
+        return;
+      }
+      const dob = new Date(dobVal);
+      const now = new Date();
+      let years = now.getFullYear() - dob.getFullYear();
+      let months = now.getMonth() - dob.getMonth();
+      let days = now.getDate() - dob.getDate();
+
+      if (days < 0) {
+        months--;
+        days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+      }
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+      document.getElementById('age-result').textContent = `आपकी सटीक उम्र: ${years} वर्ष, ${months} महीने, ${days} दिन`;
+    }
+
+    function generateQRCode() {
+      const txt = document.getElementById('qr-text-input').value.trim();
+      if (!txt) {
+        showToast('QR बनाने के लिए कोई लिंक या टेक्स्ट लिखें', '📱');
+        return;
+      }
+      document.getElementById('qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(txt)}`;
+      document.getElementById('qr-output-box').classList.remove('hidden');
+    }
+
+    function previewAndPrintBiodata() {
+      const name = document.getElementById('bio-name').value || 'Applicant Name';
+      const qual = document.getElementById('bio-qual').value || 'Graduate';
+      const contact = document.getElementById('bio-contact').value || 'Rewari, Haryana';
+      const details = document.getElementById('bio-details').value || 'Hardworking & dedicated professional.';
+
+      const area = document.getElementById('print-area');
+      area.innerHTML = `
+        <h2 class="text-2xl font-bold border-b-2 border-slate-800 pb-2">${name}</h2>
+        <p class="text-sm font-semibold mt-2">Qualification: ${qual}</p>
+        <p class="text-sm">Contact & Address: ${contact}</p>
+        <div class="mt-4">
+          <h3 class="font-bold text-base underline">Profile / Details:</h3>
+          <p class="text-sm mt-1 whitespace-pre-line">${details}</p>
+        </div>
+      `;
+      area.classList.remove('hidden');
+      window.print();
+    }
+
+    // Initialize everything on load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderLaptops();
+      calcStepUpSIP();
+      renderIPOs();
+      renderVisitingCard();
+    });
+  </script>
+</body>
+</html>
